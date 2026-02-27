@@ -2,9 +2,9 @@ name: Build C++ File
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "dev_branch" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "dev_branch"]
 
 jobs:
   build:
