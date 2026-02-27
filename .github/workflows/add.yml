@@ -1,6 +1,8 @@
 name: Build C++ File
 
 on:
+  issues:
+    types: [opened, closed]
   workflow_dispatch: 
   # schedule:
   #   - cron: '22 15 * * *'
