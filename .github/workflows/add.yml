@@ -2,6 +2,8 @@ name: Build C++ File
 
 on:
   workflow_dispatch: 
+  schedule:
+    - cron: '20 11 * * *'
   push:
     branches: [ "main", "dev_branch" ]
   pull_request:
