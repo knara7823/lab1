@@ -18,7 +18,7 @@ jobs:
         run: sudo apt update && sudo apt install -y g++
 
       - name: Compile hello.cpp
-        run: g++ -std=c++17 -O2 -Wall -Wextra main.cpp -o main
+        run: g++ -std=c++17 -O2 -Wall -Wextra hello.cpp -o main
 
       - name: Run executable
         run: ./main
