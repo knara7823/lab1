@@ -1,4 +1,4 @@
-name: Build C++ File
+name: build
 
 on:
   issues:
