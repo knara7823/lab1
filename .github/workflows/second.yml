@@ -7,8 +7,18 @@ on:
       - completed
 
 jobs:
-  run-second:
-    
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "First workflow succeeded!"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install g++
+        run: sudo apt update && sudo apt install -y g++
+
+      - name: Compile hello.cpp
+        run: g++ -std=c++17 -O2 -Wall -Wextra hello.cpp -o main
+
+      - name: Run executable
+        run: ./main
