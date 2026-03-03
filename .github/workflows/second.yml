@@ -2,7 +2,7 @@ name: Run After Build Success
 
 on:
   workflow_run:
-    workflows: ["Build C++ File"]
+    workflows: ["build"]
     types:
       - completed
 
