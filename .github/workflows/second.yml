@@ -2,18 +2,13 @@ name: Run After Build Success
 
 on:
   workflow_run:
-    workflows: ["Build C++ File"]   # Must match the "name:" of first workflow
+    workflows: ["Build C++ File"]
     types:
       - completed
 
 jobs:
-  run-second-job:
+  run-second:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Run second workflow tasks
-        run: echo "First workflow succeeded. Running second workflow..."
+      - run: echo "First workflow succeeded!"
