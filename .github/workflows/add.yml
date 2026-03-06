@@ -9,6 +9,17 @@ on:
         description: "C++ file to compile"
         required: true
         default: "hello.cpp"
+      var2:
+        description: "variable 2"
+        type: boolean
+        required: false
+        default: true
+      var3:
+        description: "variable 3"
+        type: number
+        required: false
+        default: 2026
+      
   # schedule:
   #   - cron: '22 15 * * *'
   push:
