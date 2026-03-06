@@ -3,7 +3,8 @@ name: build
 on:
   issues:
     types: [opened, closed]
-  workflow_dispatch: 
+
+  workflow_dispatch:
     inputs:
       cpp_file:
         description: "C++ file to compile"
@@ -19,27 +20,24 @@ on:
         type: number
         required: false
         default: 2026
-      
-  # schedule:
-  #   - cron: '22 15 * * *'
+
   push:
-    branches: [ "main", "dev_branch" ]
+    branches: ["main", "dev_branch"]
+
   pull_request:
-    branches: [ "main", "dev_branch"]
+    branches: ["main", "dev_branch"]
 
 jobs:
   build:
-
-   strategy:
+    strategy:
       matrix:
         os:
           - ubuntu-20.04
           - ubuntu-22.04
           - ubuntu-24.04
+
     runs-on: ${{ matrix.os }}
 
-    # runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -47,8 +45,8 @@ jobs:
       - name: Install g++
         run: sudo apt update && sudo apt install -y g++
 
-      - name: Compile hello.cpp
-        run: g++ -std=c++17 -O2 -Wall -Wextra ${{ inputs.cpp_file }} -o main
+      - name: Compile C++ file
+        run: g++ -std=c++17 -O2 -Wall -Wextra ${{ inputs.cpp_file || 'hello.cpp' }} -o main
 
       - name: Run executable
         run: ./main
