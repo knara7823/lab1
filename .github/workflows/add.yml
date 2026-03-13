@@ -1,25 +1,8 @@
 name: build
 
-on:
-  issues:
-    types: [opened, closed]
-  
+on:  
   workflow_dispatch:
     inputs:
-      cpp_file:
-        description: "C++ file to compile"
-        required: true
-        default: "hello.cpp"
-      var2:
-        description: "variable 2"
-        type: boolean
-        required: false
-        default: true
-      var3:
-        description: "variable 3"
-        type: number
-        required: false
-        default: 2026
       version:
         description: "Version to release (example: v1.2.0)"
         required: true
@@ -27,38 +10,7 @@ on:
 
 
 
-  push:
-    branches: ["main", "dev_branch"]
-    tags:
-      - 'v*'
-
-  pull_request:
-    branches: ["main", "dev_branch"]
-
 jobs:
-  build:
-    # strategy:
-    #   matrix:
-    #     os:
-    #       - ubuntu-20.04
-    #       - ubuntu-22.04
-    #       - ubuntu-24.04
-
-    # runs-on: ${{ matrix.os }}
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install g++
-        run: sudo apt update && sudo apt install -y g++
-
-      - name: Compile C++ file
-        run: g++ -std=c++17 -O2 -Wall -Wextra ${{ inputs.cpp_file || 'hello.cpp' }} -o main
-
-      - name: Run executable
-        run: ./main
-
   release:
     runs-on: ubuntu-latest
 
