@@ -9,44 +9,45 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install compiler
-        run: sudo apt-get update && sudo apt-get install -y g++
+      - run: sudo apt-get update && sudo apt-get install -y g++
 
-      - name: Compile
-        run: g++ hello.cpp -o main
+      - name: Compile hello.cpp
+        run: g++ hello.cpp -o hello
 
-      - name: Run
-        run: ./main
-  second-job:
-    runs-on: ubuntu-latest
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hello-binary
+          path: hello
+  # second-job:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-      - name: Install compiler
-        run: sudo apt-get update && sudo apt-get install -y g++
+  #     - name: Install compiler
+  #       run: sudo apt-get update && sudo apt-get install -y g++
 
-      - name: Compile
-        run: g++ add.cpp -o main
+  #     - name: Compile
+  #       run: g++ add.cpp -o main
 
-      - name: Run
-        run: ./main
-  third-job:
-    runs-on: ubuntu-latest
+  #     - name: Run
+  #       run: ./main
+  # third-job:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-      - name: Install compiler
-        run: sudo apt-get update && sudo apt-get install -y g++
+  #     - name: Install compiler
+  #       run: sudo apt-get update && sudo apt-get install -y g++
 
-      - name: Compile
-        run: g++ back.cpp -o main
+  #     - name: Compile
+  #       run: g++ back.cpp -o main
 
-      - name: Run
-        run: ./main
+  #     - name: Run
+  #       run: ./main
