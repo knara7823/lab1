@@ -16,7 +16,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y g++
 
       - name: Compile
-        run: g++ main.cpp -o main
+        run: g++ hello.cpp -o main
 
       - name: Run
         run: ./main
